@@ -1,0 +1,120 @@
+Angular is used for building client-side applications using 
+HTML, CSS and a programming language like JavaScript or TypeScript.
+
+Angular is not a programming language in itself like JavaScript. 
+Instead, it is a framework which uses a programming language 
+like JavaScript /TypeScript.
+
+Angular is a JavaScript Framework which allows us to
+create Single-page Applications.
+
+Advantage of Single Page Application
+
+SPA makes a web application faster and gives the user a reactive experience.
+
+Using JavaScript to change the content of the webpage dynamically is
+much faster than having to reach out to the server for every page change
+and for every new piece of data we want to display.
+
+If we do need some data from the server, we can load it in the background
+without making the webpage unresponsive.
+
+Why use Angular?
+
+We can use JavaScript or jQuery to do the same thing which we can do
+with Angular. But As the application grows:
+
+Vanilla JavaScript or jQuey code becomes hard to maintain and we will
+need a way to properly structure our application.
+
+A lot of applications built using vanilla JavaScript / jQuery is hard to test.
+
+Angular gives our application a clean and loosely coupled structure that is
+easy to understand & maintain.
+
+It brings a lot of utility code which can be re-used in lot of applications.
+Especially, when dealing with user navigation & browser history.
+
+Applications built with Angular are more testable.
+
+
+ANGULAR FILES AND FOLDER structure
+node_modules folder
+It contains all the third party libraries.
+It is used for development only. It is not used for production.
+
+In src folder we have all files we create used
+Every angular application should have one component and one module
+
+In Assets folder we store static files like images, text files, icons
+
+In environments we have two files one for developmemnt environment and one for production environment
+TypeScript
+
+TypeScript is a free and open-source programming language developed
+by Microsoft. It is a superset of JavaScript.
+
+TypeScript has additional features that do not exist in current version of
+JavaScript supported by most browser
+
+TypeScript is strongly typed. But JavaScript is dynamically typed.
+
+It has object oriented features which we do not have in JavaScript like
+interface, access modifiers, fields, properties, generics etc.
+
+With typescript, we can catch errors at compile time.
+
+JavaScript
+let name ="John";
+let age=28;
+let isMarried=false;
+
+TypeScript
+let name:string ="John";
+let age:number=28;
+let isMarried:boolean=false;
+
+In Javascript we dont specify the dataype so we can assign any data to variable but in typescript we specify the data type.
+So Javascript is dynamically typed language while typescript is strongly typed.
+
+
+How angular is executed
+
+
+First main.ts is executed
+
+In main.ts we pass appmodule 
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+
+This appmodule is located in app folder appmodule.ts file
+
+
+In the appmodule.ts file we have in bootstrap property all files to be executed are named
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]     
+})
+export class AppModule { }
+So now app component which is app.component.ts file is executed
+
+By this time index.html is rendered and it populated with components from ts files
+
+
+
+WHAT IS A Component
+Component is a TypeScript class decorated with @Component decorator
+and it contains methods & properties which we can use in HTML
+
+A component has 
+
+A class: It contains the code required for the view template. That means, it contains the Ul logic.
+A View template: it defines the user interface. It contains the HTML, directives & data binding.
+A decorator: It adds meta data to the class, making it a component.(where to place this in html)
