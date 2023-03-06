@@ -1,0 +1,21 @@
+<div class="search-div" [ngClass]="{changeBackground: searchValue != ''}">
+    <span><b>Search:</b></span>
+    <!-- <input type="text" (input)="changeSearchValue($event)"> -->
+    <input type="text" [(ngModel)]="searchValue">
+    <!--<span>You searched for "{{search vale}}"</span>-->
+    <span *ngIf="searchValue != ''">You searched for "{{ searchValue }}"</span>
+</div>
+
+
+<!--
+        <input type="text" (input)="changeSearchValue($event)"> 
+
+        The above is event binding
+
+        (input) type of event we want to handle in this case input event
+        Wheneever this event happens execute function changeSearchValue($event)
+-->
+
+<!--
+    <div class="search-div" [ngClass]="{className: condition != ''}">
+-->
