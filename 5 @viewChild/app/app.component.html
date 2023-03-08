@@ -1,0 +1,16 @@
+<div>
+    <label>DOB: </label>
+    <input type="date" #dobInput (blur)="calculateAge()">
+</div>
+<div>
+    <label>Age: </label>
+    <input type="text" #ageInput>
+</div>
+<app-demo></app-demo>
+{{ demoComp.sayHello()}}
+
+<!--
+    (blur)
+
+    means when we click outside the input element the function executes
+-->

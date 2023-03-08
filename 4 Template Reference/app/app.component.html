@@ -1,0 +1,13 @@
+<!-- <app-demo></app-demo> -->
+<app-customer-list #customer></app-customer-list>
+<p>You have selected {{ customer.selectedCustomer?.name}}</p>
+
+<!--
+ <app-customer-list #customer></app-customer-list> we referenced with element
+ 
+ in that element we have a selected customer property
+ we render it here
+ <p>You have selected {{ customer.selectedCustomer?.name}}</p>
+
+ We use ? because if it null it wont return an error this is Nullish Coalescing operator
+-->
