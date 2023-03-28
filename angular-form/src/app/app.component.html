@@ -1,0 +1,96 @@
+<div class="form">
+  <h2 id="registration">Registration Form</h2>
+  <!--When we click on submit at bottom of form ngSubmit event is called which executes onSubmit() method-->
+  <!--#myForm="ngForm"  #myForm is local reference variable-->
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm"> 
+
+    <!--The firstname, lastname,email are grouped together by adding an angular directive ngModelGroup
+    That attribute is assigned a value personalDetails and a local reference variable #personalDetail="ngModelGroup"-->
+      <div ngModelGroup="personDetails" #personalDetail="ngModelGroup">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="Your name.."
+        name="firstname" ngModel required #fname="ngModel">
+        <!--
+          The below element is dispalyed if the form is submitted without first name property
+          if invalis is true and touched is also true
+        -->
+        <!-- <div>
+          <small *ngIf="fname.invalid && fname.touched">First Name is a required field</small>
+          <span *ngIf="firstname">You entered {{firstname}}</span>
+        </div> -->
+    
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="Your last name.."
+        name="lastname" ngModel required>
+        <!-- <div>
+          <span *ngIf="lastname">You entered {{lastname}}</span>
+        </div> -->
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your last email.."
+        name="email" ngModel required email>
+
+        <!--The below span is displayed if the values enetered are invalid and the form is untouched
+        These are applied to the group named personalDetail-->
+        <div>
+          <small *ngIf="personalDetail.invalid && personalDetail.touched">Some of the required fields does not have valid value.</small>
+        </div>
+        <button (click)="setDefaultValues()">Set Default Values</button>
+      </div>
+      
+      <label for="country">Country</label>
+      <select id="country" name="country" [ngModel]="defaultCountry">
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+        <option value="india">India</option>
+        <option value="uk">UK</option>
+      </select>
+
+      <!--Below we are creating radio buttons using typescript
+      For eevery element in gender array create a button with id gen.id value gen.value name gender and label gen.value
+    The default value is two way binded to property named defaultGender-->
+      <label for="gender">Gender:</label>
+      <span *ngFor="let gen of gender">
+        <input type="radio" id="{{gen.id}}" value="{{gen.value}}" name="gender" [ngModel]="defaultGender">
+        <label for="male">{{gen.value}}</label>
+      </span>
+      <br><br>
+      <label>Hobbies <i>(Optional)</i></label>
+      <div class="form-inline">
+          <label><input type="checkbox" value="sports" name="hobbies" ngModel> Sports</label>
+          <label><input type="checkbox" value="movies" name="hobbies" ngModel> Movies</label>
+          <label><input type="checkbox" value="music" name="hobbies" ngModel> Music</label>
+      </div>
+    
+      <input type="submit" value="Submit" id="btn"><!--[disabled]="!myForm.valid"-->
+    </form>
+</div>
+
+<!--In the blow div the values we entered from the baove form are displayed-->
+<div class="form-data">
+  <h3>Form Data</h3>
+  <p>First Name: <b>{{firstname}}</b></p>
+  <p>Last Name: <b>{{lastname}}</b></p>
+  <p>Email: <b>{{email}}</b></p>
+  <p>Country: <b>{{country}}</b></p>
+  <p>Gender: <b>{{gen}}</b></p>
+</div>
+
+<!--
+We add name attribute  and ngModel to all HTML elements 
+This makes when the form is console.logged the values of these properties in the form are logged in the controls property
+
+And the names with its values are logged in values property 
+with key value pairs (name:its value)
+-->
+
+
+<!--
+  required is added as an attribute so that when the form is submitted that element should have a value
+-->
+
+<!--
+        <input type="submit" value="Submit" id="btn" [disabled]="!myForm.valid">
+        When form is invalid the submit button doesnt work
+-->
