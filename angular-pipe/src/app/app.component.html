@@ -1,0 +1,61 @@
+
+<div class="container">
+  <div>
+    <input type="text" 
+      placeholder="Search by gender" 
+      style="width: 450px; padding: 2px 20px; margin: 10px 0px;height: 30px;"
+      [(ngModel)]="filterText">
+  </div>
+
+  <div>
+    <h3>Total Students: {{totalStudents | async}}</h3>
+  </div>
+  <table id="student" (mousemove)="onMouseMove()">
+    <tr>
+      <th>Name</th>
+      <th>Course</th>
+      <th>Marks</th>
+      <th>Percentage</th>
+      <th>DOB</th>
+      <th>Gender</th>
+    </tr>
+      <tr *ngFor="let std of filteredStudents">
+        <td>{{std.name}}</td>
+        <td>{{std.course}}</td>
+        <td><input type="number" value="std.marks" [(ngModel)]="std.marks"></td>
+        <td>{{std.marks | percentage: totalMarks : 3 }}</td>
+        <td>{{std.DOB | date: 'fullDate' | uppercase}}</td>
+        <td>{{std.gender | lowercase}}</td>
+      </tr>
+  </table>
+  <br><br>
+  <button (click)="AddDummyStudent()">Add Student</button>
+  <button (click)="ChangeGender()">Change Gender</button>
+</div>
+
+
+<!--
+  Pipes are specified after | operator and the parameters to the pipe file are given by :
+  Multiple pipes are seperated by |
+-->
+<!--
+          <td>{{std.marks | percentage: totalMarks : 3 }}</td>
+
+          we are transforming std.marks to his percentage and passing a parameter totalMarks and another paramter 3 
+          to fix number of digits after decimal to 3
+-->
+
+<!--
+          <td>{{std.DOB | date: 'fullDate' | uppercase}}</td>
+
+          Transform std.DOB to a format by date pipe 
+          fullDate is an argument to tell date pipe to which format the date should be transformed
+          and another pipe  is convert it into uppercase
+-->
+
+<!--
+      <h3>Total Students: {{totalStudents | async}}</h3>
+      Since total students is a promise it returns a promise object
+
+      Since promises are async we use the async pipe
+-->
