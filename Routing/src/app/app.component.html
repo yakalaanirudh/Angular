@@ -1,0 +1,39 @@
+<div class="main-container">
+    <div class="nav-container">
+        <ul>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="">Home</a></li><!-- localhost:4200/Home -->
+            <li routerLinkActive="active"><a routerLink="/About">About</a></li><!-- localhost:4200/About -->
+            <li routerLinkActive="active"><a routerLink="/Contact">Contact</a></li><!-- localhost:4200/Contact -->
+            <li routerLinkActive="active"><a routerLink="/Courses">Courses</a></li><!-- localhost:4200/Courses -->
+        </ul>
+    </div>
+    <div class="component-container">
+        <!-- <app-home></app-home>s
+        <app-about></app-about>
+        <app-contact></app-contact>
+        <app-courses></app-courses> -->
+        <router-outlet></router-outlet>         <!--Here all route components are displayed-->
+    </div> 
+</div>
+
+<!--
+                <li routerLinkActive="active"><a routerLink="/Courses">Courses</a></li>
+                
+                    routerLink="/Courses"       to assign the component to render without refreshing as in the case of href  tag
+                    routerLinkActive="active"   we added a class to highlight th emenu value that is being displayed
+
+
+                    But since the home component has the root URL and the other components in the app 
+                    has the component URL appended to the root URL the root URL which is the home component 
+                    is always displayed as being active so to avoid this we add a new attribute to the tag of the home component
+
+                    [routerLinkActiveOptions]="{exact: true}"
+                This makes the home component to be highlighted only if the URL matches the exact address for the home component.
+-->
+
+<!--
+    We can add routes in two ways
+    <li routerLinkActive="active"><a [routerLink]="'/About'">About</a></li>
+    <li routerLinkActive="active"><a routerLink="/About">About</a></li> 
+-->
+   
